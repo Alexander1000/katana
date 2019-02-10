@@ -5,3 +5,4 @@
 - initial commit
 - add entrypoint `src/main.py`
 - init configs structure
+- add bash-katana

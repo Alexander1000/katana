@@ -1,4 +1,9 @@
 from cmd import Cmd
+import sys
+
+if len(sys.argv) != 3:
+    print('Usage: katana -c [config path]')
+    raise SystemExit
 
 class DeployerPrompt(Cmd):
     def do_q(self, args):
