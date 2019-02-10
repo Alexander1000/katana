@@ -5,6 +5,12 @@ if len(sys.argv) != 3:
     print('Usage: katana -c [config path]')
     raise SystemExit
 
+if sys.argv[1] == '-c':
+    config_path = sys.argv[2]
+else:
+    print('Invalid arguments')
+    raise SystemError
+
 class DeployerPrompt(Cmd):
     def do_q(self, args):
         print("Quitting.")
