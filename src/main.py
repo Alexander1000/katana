@@ -1,4 +1,5 @@
 from cmd import Cmd
+from .server import Server
 import sys
 
 helpText = 'Usage: katana [command] -c [config path]'
@@ -16,6 +17,8 @@ if sys.argv[1] == '-c':
 else:
     if sys.argv[1] == 'start':
         # todo: run server
+        server = Server()
+        server.init()
         raise SystemExit
     else:
         print(helpText)
