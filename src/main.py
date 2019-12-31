@@ -1,15 +1,25 @@
 from cmd import Cmd
 import sys
 
-if len(sys.argv) != 3:
-    print('Usage: katana -c [config path]')
+helpText = 'Usage: katana [command] -c [config path]'
+
+if len(sys.argv) == 1:
+    print(helpText)
     raise SystemExit
 
 if sys.argv[1] == '-c':
-    config_path = sys.argv[2]
+    if len(sys.argv) > 2:
+        config_path = sys.argv[2]
+    else:
+        print(helpText)
+        raise SystemExit
 else:
-    print('Invalid arguments')
-    raise SystemError
+    if sys.argv[1] == 'start':
+        # todo: run server
+        raise SystemExit
+    else:
+        print(helpText)
+        raise SystemExit
 
 class DeployerPrompt(Cmd):
     def do_q(self, args):
