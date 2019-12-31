@@ -16,7 +16,6 @@ if sys.argv[1] == '-c':
         raise SystemExit
 else:
     if sys.argv[1] == 'start':
-        # todo: run server
         server = main.Server()
         server.init()
         raise SystemExit
