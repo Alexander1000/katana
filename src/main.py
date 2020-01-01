@@ -3,6 +3,7 @@ from server import main
 import sys
 
 helpText = 'Usage: katana [command] -c [config path]'
+config_path = ''
 
 if len(sys.argv) == 1:
     print(helpText)
@@ -16,12 +17,22 @@ if sys.argv[1] == '-c':
         raise SystemExit
 else:
     if sys.argv[1] == 'start':
+        if len(sys.argv) >= 4:
+            if sys.argv[2] == '-c':
+                config_path = sys.argv[3]
+            else:
+                print(helpText)
+                raise SystemExit
+        else:
+            print(helpText)
+            raise SystemExit
         server = main.Server()
         server.init()
         raise SystemExit
     else:
         print(helpText)
         raise SystemExit
+
 
 class DeployerPrompt(Cmd):
     def do_q(self, args):
@@ -30,6 +41,7 @@ class DeployerPrompt(Cmd):
 
     def emptyline(self):
         pass
+
 
 prompt = DeployerPrompt()
 prompt.prompt = 'deployer > '
