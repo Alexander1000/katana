@@ -3,19 +3,25 @@ import yaml
 
 
 class Server:
+    listen: str
+    port: int
+
     def __init__(self, config_file: str):
-        print("config %s" % config_file)
         file = open(config_file, "r")
         configs = yaml.load(file, Loader=yaml.FullLoader)
         file.close()
-        print(configs)
+
+        server_config = configs.get('server')
+
+        self.listen = server_config.get('listen')
+        self.port = server_config.get('port')
 
     def init(self):
         # create tcp/ip socket
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
         # bind the socket to the port
-        server_address = ('127.0.0.1', 23866)
+        server_address = (self.listen, self.port)
         print('starting up on %s port %s' % server_address)
         sock.bind(server_address)
 
