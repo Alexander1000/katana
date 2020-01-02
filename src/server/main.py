@@ -1,7 +1,15 @@
 import socket
+import yaml
 
 
 class Server:
+    def __init__(self, config_file: str):
+        print("config %s" % config_file)
+        file = open(config_file, "r")
+        configs = yaml.load(file, Loader=yaml.FullLoader)
+        file.close()
+        print(configs)
+
     def init(self):
         # create tcp/ip socket
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
