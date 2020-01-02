@@ -11,10 +11,26 @@ class Server:
         configs = yaml.load(file, Loader=yaml.FullLoader)
         file.close()
 
+        self.validate(configs)
+
         server_config = configs.get('server')
 
         self.listen = server_config.get('listen')
         self.port = server_config.get('port')
+
+    def validate(self, configs: dict) -> bool:
+        if 'server' in configs.keys():
+            srv_conf = configs.get('server')
+            if type(srv_conf).__name__ != 'dict':
+                raise AssertionError("Expected type dict, '%s' given" % type(srv_conf).__name__)
+            if 'listen' not in srv_conf.keys():
+                return False
+            if 'port' not in srv_conf.keys():
+                return False
+        else:
+            return False
+
+        return True
 
     def init(self):
         # create tcp/ip socket
