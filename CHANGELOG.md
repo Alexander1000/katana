@@ -3,6 +3,8 @@
 ## 1.0.0 (Unreleased)
 
 - http-server
+- configure with yaml-file
+- validate config
 
 ## 0.0.1 (2019-02-10)
 ### Added
