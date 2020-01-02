@@ -18,17 +18,25 @@ class Server:
         self.listen = server_config.get('listen')
         self.port = server_config.get('port')
 
+    def __assert_key_exists(self, path: str, key: str, data: dict) -> bool:
+        if key not in data.keys():
+            if len(path) > 0:
+                raise AssertionError("Expected field '%s' exists in path '%s'" % (key, path))
+            else:
+                raise AssertionError("Expected field '%s' exists" % key)
+        return True
+
+    def __assert_type(self, path: str, data_type: str, data) -> bool:
+        if type(data).__name__ != data_type:
+            raise AssertionError("Expected type '%s' of '%s', but '%s' given" % (data_type, path, type(data).__name__))
+        return True
+
     def validate(self, configs: dict) -> bool:
-        if 'server' in configs.keys():
-            srv_conf = configs.get('server')
-            if type(srv_conf).__name__ != 'dict':
-                raise AssertionError("Expected type dict, '%s' given" % type(srv_conf).__name__)
-            if 'listen' not in srv_conf.keys():
-                return False
-            if 'port' not in srv_conf.keys():
-                return False
-        else:
-            return False
+        self.__assert_key_exists('', 'server', configs)
+        srv_conf = configs.get('server')
+        self.__assert_type('server', 'dict', srv_conf)
+        self.__assert_key_exists('server', 'listen', srv_conf)
+        self.__assert_key_exists('server', 'port', srv_conf)
 
         return True
 
