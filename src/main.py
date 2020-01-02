@@ -26,7 +26,7 @@ else:
         else:
             print(helpText)
             raise SystemExit
-        server = main.Server()
+        server = main.Server(config_path)
         server.init()
         raise SystemExit
     else:
