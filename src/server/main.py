@@ -1,5 +1,6 @@
 import socket
 import yaml
+import os
 
 
 class Server:
@@ -7,23 +8,39 @@ class Server:
     port: int
 
     def __init__(self, config_file: str):
+        self.__load_config(config_file)
+
+    def __load_config(self, config_file: str) -> bool:
         file = open(config_file, "r")
         configs = yaml.load(file, Loader=yaml.FullLoader)
         file.close()
 
-        self.validate(configs)
-
-        server_config = configs.get('server')
-
-        self.listen = server_config.get('listen')
-        self.port = server_config.get('port')
-
-    def validate(self, configs: dict) -> bool:
         assert 'server' in configs.keys(), "Expected field 'server' exists"
         srv_conf = configs.get('server')
         assert type(srv_conf).__name__ == 'dict', "Expected type 'dict' of 'server', but '%s' given" % type(srv_conf).__name__
         assert 'listen' in srv_conf.keys(), "Expected field 'listen' exists in 'server'"
         assert 'port' in srv_conf.keys(), "Expected field 'port' exists in 'server'"
+
+        self.listen = srv_conf.get('listen')
+        self.port = srv_conf.get('port')
+
+        assert 'projectsDir' in configs.keys(), "Expected field 'projectsDir' exists"
+        projects_dir = configs.get('projectsDir')
+        assert type(projects_dir).__name__ == 'str'
+
+        for f in os.listdir(projects_dir):
+            filename, file_ext = os.path.splitext(f)
+            if file_ext != '.yml':
+                continue
+
+            proj_file = open("{}/{}".format(projects_dir, f), "r")
+            proj_configs = yaml.load(proj_file, Loader=yaml.FullLoader)
+            proj_file.close()
+
+            assert 'name' in proj_configs.keys(), "Expected field 'name' exists in project file '%s'" % f
+            assert 'host' in proj_configs.keys(), "Expected field 'host' exists in project file '%s'" % f
+
+            print("Load configs for project: '%s', host: '%s'" % (proj_configs.get("name"), proj_configs.get("host")))
 
         return True
 
