@@ -1,13 +1,17 @@
 import socket
 import yaml
 import os
+import project.project as proj
 
 
 class Server:
     listen: str
     port: int
 
+    projects: []
+
     def __init__(self, config_file: str):
+        self.projects = []
         self.__load_config(config_file)
 
     def __load_config(self, config_file: str) -> bool:
@@ -41,6 +45,8 @@ class Server:
             assert 'host' in proj_configs.keys(), "Expected field 'host' exists in project file '%s'" % f
 
             print("Load configs for project: '%s', host: '%s'" % (proj_configs.get("name"), proj_configs.get("host")))
+
+            self.projects.append(proj.Project(name=proj_configs.get("name"), host=proj_configs.get("host")))
 
         return True
 
