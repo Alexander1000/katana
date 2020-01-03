@@ -1,2 +1,15 @@
 name: beauty-recommend
 host: www.beauty-recommend.ru
+
+builds:
+  - name: run-tests
+    description: bla-bla-bla
+    steps:
+      - name: step-01
+        description: pre-install
+        action: run-custom-shell
+      - name: step-02
+        description: run-tests
+        action: phpunit
+      - name: step-03
+        action: print-result
