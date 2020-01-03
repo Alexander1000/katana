@@ -33,4 +33,4 @@ else:
         print(helpText)
         raise SystemExit
 
-main_cli.main()
+main_cli.main(config_path)
