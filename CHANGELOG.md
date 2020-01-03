@@ -2,6 +2,10 @@
 
 ## 1.0.0 (Unreleased)
 
+- coming soon...
+
+## 0.0.2 (2020-01-03)
+
 - http-server
 - configure with yaml-file
 - validate config
