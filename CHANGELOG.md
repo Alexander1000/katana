@@ -7,6 +7,7 @@
 ## 0.0.3 (2020-xx-xx Unreleased)
 
 - add loader config
+- print list projects in interactive menu
 
 ## 0.0.2 (2020-01-03)
 
