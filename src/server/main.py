@@ -1,5 +1,6 @@
 import socket
 import yaml
+import os
 
 
 class Server:
@@ -26,6 +27,20 @@ class Server:
         assert 'projectsDir' in configs.keys(), "Expected field 'projectsDir' exists"
         projects_dir = configs.get('projectsDir')
         assert type(projects_dir).__name__ == 'str'
+
+        for f in os.listdir(projects_dir):
+            filename, file_ext = os.path.splitext(f)
+            if file_ext != '.yml':
+                continue
+
+            proj_file = open("{}/{}".format(projects_dir, f), "r")
+            proj_configs = yaml.load(proj_file, Loader=yaml.FullLoader)
+            proj_file.close()
+
+            assert 'name' in proj_configs.keys(), "Expected field 'name' exists in project file '%s'" % f
+            assert 'host' in proj_configs.keys(), "Expected field 'host' exists in project file '%s'" % f
+
+            print("Load configs for project: '%s', host: '%s'" % (proj_configs.get("name"), proj_configs.get("host")))
 
         return True
 
