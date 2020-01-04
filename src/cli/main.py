@@ -26,10 +26,8 @@ class DeployerPrompt(Cmd):
 
 
 def main(config_path: str):
-    l = loader.Loader(config_path)
-
     prompt = DeployerPrompt()
-    prompt.loader = l
+    prompt.loader = loader.Loader(config_path)
     prompt.prompt = 'katana > '
     prompt.doc_leader = 'Katana commands'
     prompt.doc_header = 'list commands'
@@ -38,7 +36,7 @@ def main(config_path: str):
     projectPrompt = ''
 
     i = 1
-    for project in l.get_projects():
+    for project in prompt.loader.get_projects():
         projectPrompt += "\t[{}] {}\n".format(i, project.name)
         i = i + 1
 
