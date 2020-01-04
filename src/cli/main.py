@@ -5,6 +5,18 @@ import config.loader as loader
 class DeployerPrompt(Cmd):
     loader: loader.Loader
 
+    def default(self, line):
+        if line.isdigit():
+            number = int(line)
+            if number >= 1 and number <= len(self.loader.get_projects()):
+                project = self.loader.get_projects()[number-1]
+                print("Selected project '{}'\n".format(project.name))
+            else:
+                print("Invalid project number")
+            return
+
+        super().default(line)
+
     def do_q(self, args):
         print("Quitting.")
         raise SystemExit
