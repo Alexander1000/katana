@@ -8,7 +8,7 @@ class DeployerPrompt(Cmd):
     def default(self, line):
         if line.isdigit():
             number = int(line)
-            if number >= 1 and number <= len(self.loader.get_projects()):
+            if 1 <= number <= len(self.loader.get_projects()):
                 project = self.loader.get_projects()[number-1]
                 print("Selected project '{}'\n".format(project.name))
             else:
