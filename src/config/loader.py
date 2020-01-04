@@ -43,7 +43,13 @@ class Loader:
 
             print("Load configs for project: '%s', host: '%s'" % (proj_configs.get("name"), proj_configs.get("host")))
 
-            self.projects.append(proj.Project(name=proj_configs.get("name"), host=proj_configs.get("host")))
+            project = proj.Project(name=proj_configs.get("name"), host=proj_configs.get("host"))
+
+            self.projects.append(project)
+
+            if 'builds' in proj_configs.keys():
+                builds_list_raw = proj_configs.get('builds')
+                assert type(builds_list_raw).__name__ == 'list', "Expected type 'list' of 'builds', but '%s' given" % type(builds_list_raw).__name__
 
     def get_projects(self):
         return self.projects
