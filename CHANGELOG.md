@@ -8,6 +8,7 @@
 
 - add config option: `workDir`
 - refactoring config loader
+- update help message
 
 ## 0.0.3 (2020-01-05)
 
