@@ -6,7 +6,7 @@
 
 ## 0.0.5 (2020-xx-xx Unreleased)
 
-- coming soon...
+- enter in menu project
 
 ## 0.0.4 (2020-01-05)
 

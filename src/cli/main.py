@@ -1,5 +1,6 @@
 from cmd import Cmd
 import config.loader as loader
+import cli.project as project_menu
 
 
 class DeployerPrompt(Cmd):
@@ -11,6 +12,7 @@ class DeployerPrompt(Cmd):
             if 1 <= number <= len(self.loader.get_projects()):
                 project = self.loader.get_projects()[number-1]
                 print("Selected project '{}'\n".format(project.name))
+                project_menu.run()
             else:
                 print("Invalid project number")
             return
