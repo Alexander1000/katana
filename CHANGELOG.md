@@ -4,7 +4,11 @@
 
 - coming soon...
 
-## 0.0.4 (2020-xx-xx Unreleased)
+## 0.0.5 (2020-xx-xx Unreleased)
+
+- coming soon...
+
+## 0.0.4 (2020-01-05)
 
 - add config option: `workDir`
 - refactoring config loader
