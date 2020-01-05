@@ -2,6 +2,7 @@ import yaml
 import os
 import project.project as proj
 import project.build as build
+import project.step as step
 
 
 class Loader:
@@ -62,6 +63,17 @@ class Loader:
                     b = build.Build(build_raw.get('name'), build_raw.get('description'))
 
                     project.add_build(b)
+
+                    step_list_raw = build_raw.get('steps')
+                    assert type(step_list_raw).__name__ == 'list', "Expected type 'list' of 'builds.steps', but '%s' given" % type(step_list_raw).__name__
+
+                    for step_raw in step_list_raw:
+                        assert type(step_raw).__name__ == 'dict', "Expected type 'dict' of element steps, but '%s' given" % type(step_raw).__name__
+
+                        assert 'name' in step_raw.keys(), "Expected field 'name' exists"
+
+                        s = step.Step(step_raw.get('name'))
+                        b.add_step(s)
 
     def get_projects(self):
         return self.projects
