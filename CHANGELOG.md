@@ -8,6 +8,8 @@
 
 - add loader config
 - print list projects in interactive menu
+- load build settings for projects from yaml
+- load steps
 
 ## 0.0.2 (2020-01-03)
 
