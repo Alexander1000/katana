@@ -7,6 +7,7 @@
 ## 0.0.4 (2020-xx-xx Unreleased)
 
 - add config option: `workDir`
+- refactoring config loader
 
 ## 0.0.3 (2020-01-05)
 

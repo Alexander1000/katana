@@ -2,7 +2,6 @@ import yaml
 import os
 import project.project as proj
 import project.build as build
-import project.step as step
 
 
 class Loader:
