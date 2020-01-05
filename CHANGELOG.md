@@ -4,7 +4,11 @@
 
 - coming soon...
 
-## 0.0.3 (2020-xx-xx Unreleased)
+## 0.0.4 (2020-xx-xx Unreleased)
+
+- comming soon...
+
+## 0.0.3 (2020-01-05)
 
 - add loader config
 - print list projects in interactive menu
