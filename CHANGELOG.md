@@ -6,7 +6,7 @@
 
 ## 0.0.4 (2020-xx-xx Unreleased)
 
-- comming soon...
+- add config option: `workDir`
 
 ## 0.0.3 (2020-01-05)
 

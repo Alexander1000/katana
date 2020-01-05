@@ -3,3 +3,5 @@ server:
   port: 23866
 
 projectsDir: ./etc/projects
+
+workDir: ~/katana
