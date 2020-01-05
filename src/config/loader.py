@@ -70,10 +70,7 @@ class Loader:
                     for step_raw in step_list_raw:
                         assert type(step_raw).__name__ == 'dict', "Expected type 'dict' of element steps, but '%s' given" % type(step_raw).__name__
 
-                        assert 'name' in step_raw.keys(), "Expected field 'name' exists"
-
-                        s = step.Step(step_raw.get('name'))
-                        b.add_step(s)
+                        b.add_step(step.parse(step_raw))
 
     def get_projects(self):
         return self.projects
