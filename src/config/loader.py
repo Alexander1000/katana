@@ -1,7 +1,6 @@
 import yaml
 import os
 import project.project as proj
-import project.build as build
 
 
 class Loader:
@@ -39,23 +38,7 @@ class Loader:
             proj_configs = yaml.load(proj_file, Loader=yaml.FullLoader)
             proj_file.close()
 
-            assert 'name' in proj_configs.keys(), "Expected field 'name' exists in project file '%s'" % f
-            assert 'host' in proj_configs.keys(), "Expected field 'host' exists in project file '%s'" % f
-
-            print("Load configs for project: '%s', host: '%s'" % (proj_configs.get("name"), proj_configs.get("host")))
-
-            project = proj.Project(name=proj_configs.get("name"), host=proj_configs.get("host"))
-
-            self.projects.append(project)
-
-            if 'builds' in proj_configs.keys():
-                builds_list_raw = proj_configs.get('builds')
-                assert type(builds_list_raw).__name__ == 'list', "Expected type 'list' of 'builds', but '%s' given" % type(builds_list_raw).__name__
-
-                for build_raw in builds_list_raw:
-                    assert type(build_raw).__name__ == 'dict', "Expected type 'dict' of 'builds' element, but '%s' given" % type(build_raw).__name__
-
-                    project.add_build(build.parse(build_raw))
+            self.projects.append(proj.parse(proj_configs))
 
     def get_projects(self):
         return self.projects

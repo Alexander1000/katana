@@ -14,3 +14,23 @@ class Project:
 
     def add_build(self, build: build.Build):
         self.builds.append(build)
+
+
+def parse(data: dict) -> Project:
+    assert 'name' in data.keys(), "Expected field 'name' exists"
+    assert 'host' in data.keys(), "Expected field 'host' exists"
+
+    project = Project(name=data.get("name"), host=data.get("host"))
+
+    if 'builds' in data.keys():
+        builds_list_raw = data.get('builds')
+        assert type(builds_list_raw).__name__ == 'list',\
+            "Expected type 'list' of 'builds', but '%s' given" % type(builds_list_raw).__name__
+
+        for build_raw in builds_list_raw:
+            assert type(build_raw).__name__ == 'dict',\
+                "Expected type 'dict' of 'builds' element, but '%s' given" % type(build_raw).__name__
+
+            project.add_build(build.parse(build_raw))
+
+    return project
