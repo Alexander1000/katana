@@ -7,7 +7,7 @@ class Loader:
     listen: str
     port: int
 
-    projects: []
+    projects: list
 
     def __init__(self, config_file: str):
         self.projects = []
