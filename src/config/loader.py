@@ -1,6 +1,7 @@
 import yaml
 import os
 import project.project as proj
+import project.build as build
 
 
 class Loader:
@@ -57,6 +58,10 @@ class Loader:
                     assert 'name' in build_raw.keys(), "Expected field 'name' exists in 'build[]'"
                     assert 'description' in build_raw.keys(), "Expected field 'description' exists in 'build[]'"
                     assert 'steps' in build_raw.keys(), "Expected field 'steps' exists in 'build[]'"
+
+                    b = build.Build(build_raw.get('name'), build_raw.get('description'))
+
+                    project.add_build(b)
 
     def get_projects(self):
         return self.projects
