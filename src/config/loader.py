@@ -56,21 +56,7 @@ class Loader:
                 for build_raw in builds_list_raw:
                     assert type(build_raw).__name__ == 'dict', "Expected type 'dict' of 'builds' element, but '%s' given" % type(build_raw).__name__
 
-                    assert 'name' in build_raw.keys(), "Expected field 'name' exists in 'build[]'"
-                    assert 'description' in build_raw.keys(), "Expected field 'description' exists in 'build[]'"
-                    assert 'steps' in build_raw.keys(), "Expected field 'steps' exists in 'build[]'"
-
-                    b = build.Build(build_raw.get('name'), build_raw.get('description'))
-
-                    project.add_build(b)
-
-                    step_list_raw = build_raw.get('steps')
-                    assert type(step_list_raw).__name__ == 'list', "Expected type 'list' of 'builds.steps', but '%s' given" % type(step_list_raw).__name__
-
-                    for step_raw in step_list_raw:
-                        assert type(step_raw).__name__ == 'dict', "Expected type 'dict' of element steps, but '%s' given" % type(step_raw).__name__
-
-                        b.add_step(step.parse(step_raw))
+                    project.add_build(build.parse(build_raw))
 
     def get_projects(self):
         return self.projects
