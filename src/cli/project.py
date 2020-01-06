@@ -1,5 +1,6 @@
 from cmd import Cmd
 import project.project as project
+import context.context as context
 
 
 class ProjectMenu(Cmd):
@@ -11,13 +12,18 @@ class ProjectMenu(Cmd):
             if 1 <= number <= len(self.proj.get_builds()):
                 build = self.proj.get_builds()[number-1]
                 print("Selected build '{}'\n".format(build.name))
-                build.run()
+                build.run(self.make_context())
                 return
             else:
                 print("Invalid build number")
             return
 
         super().default(line)
+
+    def make_context(self) -> context.Context:
+        ctx = context.Context()
+        ctx.set_project(self.proj)
+        return ctx
 
     def do_q(self, args):
         print("Quitting.")
