@@ -8,7 +8,7 @@
 
 - coming soon...
 
-## 0.0.5 (2020-01-06 Unreleased)
+## 0.0.5 (2020-01-06)
 
 - enter in menu project
 - print list builds for project
