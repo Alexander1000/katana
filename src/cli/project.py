@@ -5,6 +5,18 @@ import project.project as project
 class ProjectMenu(Cmd):
     proj: project.Project
 
+    def default(self, line):
+        if line.isdigit():
+            number = int(line)
+            if 1 <= number <= len(self.proj.get_builds()):
+                build = self.proj.get_builds()[number-1]
+                print("Selected build '{}'\n".format(build.name))
+            else:
+                print("Invalid build number")
+            return
+
+        super().default(line)
+
     def do_q(self, args):
         print("Quitting.")
         raise SystemExit
@@ -16,7 +28,7 @@ class ProjectMenu(Cmd):
 def run(proj: project.Project):
     prompt = ProjectMenu()
     prompt.proj = proj
-    prompt.prompt = 'katana [{}] >'.format(proj.name)
+    prompt.prompt = 'katana [{}] > '.format(proj.name)
     prompt.doc_leader = 'Katana commands'
     prompt.doc_header = 'list commands'
     prompt.intro = 'Interactive commands'

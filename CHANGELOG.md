@@ -8,6 +8,7 @@
 
 - enter in menu project
 - print list builds for project
+- select build for project
 
 ## 0.0.4 (2020-01-05)
 
