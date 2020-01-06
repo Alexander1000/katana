@@ -15,6 +15,9 @@ class Project:
     def add_build(self, build: build.Build):
         self.builds.append(build)
 
+    def get_builds(self) -> list:
+        return self.builds
+
 
 def parse(data: dict) -> Project:
     assert 'name' in data.keys(), "Expected field 'name' exists"
