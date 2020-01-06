@@ -7,6 +7,7 @@
 ## 0.0.5 (2020-xx-xx Unreleased)
 
 - enter in menu project
+- print list builds for project
 
 ## 0.0.4 (2020-01-05)
 
