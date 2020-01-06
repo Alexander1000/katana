@@ -1,4 +1,5 @@
 from cmd import Cmd
+import project.project as project
 
 
 class ProjectMenu(Cmd):
@@ -10,6 +11,6 @@ class ProjectMenu(Cmd):
         pass
 
 
-def run():
+def run(proj: project.Project):
     prompt = ProjectMenu()
-    prompt.cmdloop("Welcome")
+    prompt.cmdloop("Welcome {}".format(proj.name))

@@ -12,7 +12,7 @@ class DeployerPrompt(Cmd):
             if 1 <= number <= len(self.loader.get_projects()):
                 project = self.loader.get_projects()[number-1]
                 print("Selected project '{}'\n".format(project.name))
-                project_menu.run()
+                project_menu.run(project)
             else:
                 print("Invalid project number")
             return
