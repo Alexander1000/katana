@@ -1,5 +1,4 @@
 import project.step as step
-import context.context as context
 
 
 class Build:
@@ -15,8 +14,9 @@ class Build:
     def add_step(self, step: step.Step):
         self.steps.append(step)
 
-    def run(self, ctx: context.Context):
+    def run(self, ctx: dict):
         print("I'm running")
+        print(ctx)
 
 
 def parse(data: dict) -> Build:

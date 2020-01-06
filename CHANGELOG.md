@@ -7,6 +7,7 @@
 ## 0.0.6 (2020-xx-xx Unreleased)
 
 - run selected build
+- make context for build
 
 ## 0.0.5 (2020-01-06)
 
