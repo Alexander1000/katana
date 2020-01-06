@@ -14,6 +14,9 @@ class Build:
     def add_step(self, step: step.Step):
         self.steps.append(step)
 
+    def run(self):
+        print("I'm running")
+
 
 def parse(data: dict) -> Build:
     assert 'name' in data.keys(), "Expected field 'name' exists"

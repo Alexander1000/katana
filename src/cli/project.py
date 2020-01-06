@@ -11,6 +11,8 @@ class ProjectMenu(Cmd):
             if 1 <= number <= len(self.proj.get_builds()):
                 build = self.proj.get_builds()[number-1]
                 print("Selected build '{}'\n".format(build.name))
+                build.run()
+                return
             else:
                 print("Invalid build number")
             return
