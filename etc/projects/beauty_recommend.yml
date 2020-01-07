@@ -8,8 +8,12 @@ builds:
       - name: step-01
         description: pre-install
         action: run-custom-shell
+        command: some-command
       - name: step-02
         description: run-tests
-        action: phpunit
+        action: run-custom-shell
+        command: some-command
       - name: step-03
-        action: print-result
+        description: coverage
+        action: run-custom-shell
+        command: some-command
