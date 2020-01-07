@@ -8,6 +8,7 @@
 
 - run selected build
 - make context for build
+- run chain steps
 
 ## 0.0.5 (2020-01-06)
 
