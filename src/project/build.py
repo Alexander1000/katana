@@ -14,9 +14,16 @@ class Build:
     def add_step(self, step: step.Step):
         self.steps.append(step)
 
-    def run(self, ctx: dict):
-        print("I'm running")
-        print(ctx)
+    def run(self, ctx: dict) -> bool:
+        success = True
+
+        for step in self.steps:
+            result = step.run(ctx)
+            if not result:
+                success = False
+                break
+
+        return success
 
 
 def parse(data: dict) -> Build:

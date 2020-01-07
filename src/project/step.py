@@ -17,6 +17,9 @@ class Step:
     def set_command(self, command: str):
         self.command = command
 
+    def run(self, ctx: dict) -> bool:
+        return True
+
 
 def parse(data: dict) -> Step:
     assert 'name' in data.keys(), "Expected field 'name' exists"
