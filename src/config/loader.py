@@ -1,6 +1,7 @@
 import yaml
 import os
 import project.project as proj
+from pathlib import Path
 
 
 class Loader:
@@ -8,6 +9,8 @@ class Loader:
     port: int
 
     projects: list
+
+    workDir: str
 
     def __init__(self, config_file: str):
         self.projects = []
@@ -24,6 +27,14 @@ class Loader:
 
         self.listen = srv_conf.get('listen')
         self.port = srv_conf.get('port')
+
+        if 'workDir' in configs.keys():
+            self.workDir = configs.get('workDir')
+            if self.workDir[0:2] == '~/':
+                self.workDir = "{}/{}".format(str(Path.home()), self.workDir[2:])
+
+            if not os.path.exists(self.workDir):
+                os.makedirs(self.workDir, 0o777, False)
 
         assert 'projectsDir' in configs.keys(), "Expected field 'projectsDir' exists"
         projects_dir = configs.get('projectsDir')

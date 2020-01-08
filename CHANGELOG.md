@@ -6,7 +6,7 @@
 
 ## 0.0.7 (2020-xx-xx Unreleased)
 
-- coming soon...
+- create work dir if not exists
 
 ## 0.0.6 (2020-01-07)
 
