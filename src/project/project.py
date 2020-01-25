@@ -7,6 +7,8 @@ class Project:
 
     builds: list
 
+    workDir: str
+
     def __init__(self, name: str, host: str):
         self.name = name
         self.host = host
@@ -17,6 +19,9 @@ class Project:
 
     def get_builds(self) -> list:
         return self.builds
+
+    def set_work_dir(self, work_dir: str):
+        self.workDir = work_dir
 
 
 def parse(data: dict) -> Project:

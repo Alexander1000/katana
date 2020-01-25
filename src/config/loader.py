@@ -49,7 +49,10 @@ class Loader:
             proj_configs = yaml.load(proj_file, Loader=yaml.FullLoader)
             proj_file.close()
 
-            self.projects.append(proj.parse(proj_configs))
+            p = proj.parse(proj_configs)
+            p.set_work_dir(self.workDir)
+
+            self.projects.append(p)
 
     def get_projects(self):
         return self.projects

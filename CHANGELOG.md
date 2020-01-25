@@ -7,6 +7,7 @@
 ## 0.0.7 (2020-xx-xx Unreleased)
 
 - create work dir if not exists
+- work dir pass to project
 
 ## 0.0.6 (2020-01-07)
 
