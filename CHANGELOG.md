@@ -8,6 +8,8 @@
 
 - create work dir if not exists
 - work dir pass to project
+- add unit-tests
+- add function for sanitize project/build name in directory
 
 ## 0.0.6 (2020-01-07)
 
