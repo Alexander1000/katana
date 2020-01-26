@@ -1,4 +1,5 @@
 import project.build as build
+import utils.sanitize as sanitize
 
 
 class Project:
@@ -24,7 +25,7 @@ class Project:
         self.workDir = work_dir
 
     def get_project_dir(self) -> str:
-        return self.workDir
+        return self.workDir + '/' + sanitize.sanitize(self.name)
 
 
 def parse(work_dir: str, data: dict) -> Project:
