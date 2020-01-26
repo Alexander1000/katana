@@ -24,11 +24,12 @@ class Project:
         self.workDir = work_dir
 
 
-def parse(data: dict) -> Project:
+def parse(work_dir: str, data: dict) -> Project:
     assert 'name' in data.keys(), "Expected field 'name' exists"
     assert 'host' in data.keys(), "Expected field 'host' exists"
 
     project = Project(name=data.get("name"), host=data.get("host"))
+    project.set_work_dir(work_dir)
 
     if 'builds' in data.keys():
         builds_list_raw = data.get('builds')
