@@ -2,6 +2,7 @@ import cli.main as main_cli
 from server import main
 import sys
 import os
+import re
 
 
 def help() -> str:
@@ -22,7 +23,15 @@ if len(sys.argv) == 1:
 if sys.argv[1] == 'tests':
     for root, subdir, files in os.walk(os.getcwd() + "/tests"):
         if len(files) > 0:
-            os.system("python3 -m unittest discover --pattern \"*_test.py\" {}".format(root))
+            testsExist = False
+            for file in files:
+                matches = re.search('_test\.py$', file)
+                if matches is not None:
+                    testsExist = True
+                    break
+
+            if testsExist:
+                os.system("python3 -m unittest discover --pattern \"*_test.py\" {}".format(root))
     raise SystemExit
 
 if sys.argv[1] == '-c':
