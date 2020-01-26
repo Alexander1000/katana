@@ -10,6 +10,7 @@
 - work dir pass to project
 - add unit-tests
 - add function for sanitize project/build name in directory
+- run unit tests with cli `katana tests`
 
 ## 0.0.6 (2020-01-07)
 
