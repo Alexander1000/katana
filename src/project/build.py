@@ -6,6 +6,8 @@ class Build:
     description: str
     steps: list
 
+    workDir: str
+
     def __init__(self, name: str, description: str):
         self.name = name
         self.description = description
@@ -24,6 +26,9 @@ class Build:
                 break
 
         return success
+
+    def set_work_dir(self, work_dir: str):
+        self.workDir = work_dir
 
 
 def parse(data: dict) -> Build:

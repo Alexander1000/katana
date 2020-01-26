@@ -23,6 +23,9 @@ class Project:
     def set_work_dir(self, work_dir: str):
         self.workDir = work_dir
 
+    def get_project_dir(self) -> str:
+        return self.workDir
+
 
 def parse(work_dir: str, data: dict) -> Project:
     assert 'name' in data.keys(), "Expected field 'name' exists"
@@ -40,6 +43,8 @@ def parse(work_dir: str, data: dict) -> Project:
             assert type(build_raw).__name__ == 'dict',\
                 "Expected type 'dict' of 'builds' element, but '%s' given" % type(build_raw).__name__
 
-            project.add_build(build.parse(build_raw))
+            b = build.parse(build_raw)
+            b.set_work_dir(project.get_project_dir())
+            project.add_build(b)
 
     return project
