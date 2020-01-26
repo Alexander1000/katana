@@ -1,6 +1,7 @@
 import cli.main as main_cli
 from server import main
 import sys
+import os
 
 
 def help() -> str:
@@ -16,6 +17,12 @@ config_path = ''
 
 if len(sys.argv) == 1:
     print(help())
+    raise SystemExit
+
+if sys.argv[1] == 'tests':
+    for root, subdir, files in os.walk(os.getcwd() + "/tests"):
+        if len(files) > 0:
+            os.system("python3 -m unittest discover --pattern \"*_test.py\" {}".format(root))
     raise SystemExit
 
 if sys.argv[1] == '-c':
