@@ -4,7 +4,11 @@
 
 - coming soon...
 
-## 0.0.7 (2020-xx-xx Unreleased)
+## 0.0.8 (2020-xx-xx Unreleased)
+
+- coming soon...
+
+## 0.0.7 (2020-01-26)
 
 - create work dir if not exists
 - work dir pass to project
