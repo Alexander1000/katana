@@ -1,4 +1,7 @@
 import project.step as step
+import time
+import utils.digit_to_letter as digit_to_letter
+import os
 
 
 class Build:
@@ -17,7 +20,10 @@ class Build:
         self.steps.append(step)
 
     def run(self, ctx: dict) -> bool:
-        # convert timestamp to alpha-digits dir for make dir current build
+        n_time = time.time_ns()
+        work_dir = self.workDir + '/' + digit_to_letter.digit_to_letter(n_time)
+
+        os.makedirs(work_dir, 0o777, False)
 
         success = True
 
