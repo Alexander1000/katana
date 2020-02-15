@@ -17,6 +17,8 @@ class Build:
         self.steps.append(step)
 
     def run(self, ctx: dict) -> bool:
+        # convert timestamp to alpha-digits dir for make dir current build
+
         success = True
 
         for step in self.steps:

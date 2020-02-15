@@ -7,6 +7,7 @@
 ## 0.0.8 (2020-xx-xx Unreleased)
 
 - add test-cases for sanitize
+- convert digits to letter, add unit-tests
 
 ## 0.0.7 (2020-01-26)
 
