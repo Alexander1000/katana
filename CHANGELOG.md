@@ -4,7 +4,11 @@
 
 - coming soon...
 
-## 0.0.8 (2020-xx-xx Unreleased)
+## 0.0.9 (2020-xx-xx Unreleased)
+
+- coming soon...
+
+## 0.0.8 (2020-02-15)
 
 - add test-cases for sanitize
 - convert digits to letter, add unit-tests
