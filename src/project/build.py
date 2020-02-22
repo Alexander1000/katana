@@ -25,6 +25,8 @@ class Build:
 
         os.makedirs(work_dir, 0o777, False)
 
+        ctx['workDir'] = work_dir
+
         success = True
 
         for step in self.steps:
