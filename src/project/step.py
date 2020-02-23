@@ -1,3 +1,5 @@
+import os
+
 allowed_actions = [
     'run-custom-shell'
 ]
@@ -18,6 +20,8 @@ class Step:
         self.command = command
 
     def run(self, ctx: dict) -> bool:
+        if self.action == 'run-custom-shell':
+            os.system(self.command)
         return True
 
 

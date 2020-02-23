@@ -7,6 +7,7 @@
 ## 0.0.9 (2020-xx-xx Unreleased)
 
 - add `workDir` in context
+- run plain command in steps
 
 ## 0.0.8 (2020-02-15)
 
