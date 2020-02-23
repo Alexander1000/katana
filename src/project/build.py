@@ -27,6 +27,9 @@ class Build:
 
         ctx['workDir'] = work_dir
 
+        cur_dir = os.getcwd()
+        os.chdir(work_dir)
+
         success = True
 
         for step in self.steps:
@@ -35,6 +38,7 @@ class Build:
                 success = False
                 break
 
+        os.chdir(cur_dir)
         return success
 
     def set_work_dir(self, work_dir: str):
